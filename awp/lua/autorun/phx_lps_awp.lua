@@ -20,7 +20,7 @@ if engine.ActiveGamemode() == "prop_hunt" then
 		channel = 		CHAN_ITEM,
 		volume = 		1.0,
 		level = 		100,
-		sound = 		")weapons/awp/the_bolt.wav"
+		sound = 		"weapons/awp/the_bolt.wav"
 	})
 	
 	if CLIENT then
@@ -173,7 +173,8 @@ if SERVER then
 		
 			local atk = dmginfo:GetAttacker()
 		
-			if atk:IsPlayer() && ply:Team() == TEAM_HUNTERS and atk:Team() == TEAM_PROPS and atk:IsLastStanding() then
+			if atk:IsPlayer() && ply:Team() == TEAM_HUNTERS and atk:Team() == TEAM_PROPS and atk:IsLastStanding() and 
+				atk:GetLPSWeaponName() == WepName:lower() and GAMEMODE:InRound() then
 				if ( hitgroup == HITGROUP_HEAD ) then
 					if ply:Armor() > 0 then
 						ply:EmitSound( "player/bhit_helmet-1.wav", 90, 100, 1, CHAN_AUTO )
