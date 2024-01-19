@@ -7,7 +7,6 @@ if engine.ActiveGamemode() == "prop_hunt" then
 	local IsPropBanned,CollectProps,GetRandomModel,UsePropType
 	if SERVER then
 		IsPropBanned = function( mdl )
-			print( table.HasValue( PHX.BANNED_PROP_MODELS, mdl ) and "Found Banned Model: "..mdl )
 			return PHX:GetCVar( "ph_banned_models" ) and table.HasValue( PHX.BANNED_PROP_MODELS, mdl )
 		end
 
