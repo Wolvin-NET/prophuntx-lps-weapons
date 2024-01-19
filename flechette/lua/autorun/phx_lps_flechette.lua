@@ -8,7 +8,9 @@ if engine.ActiveGamemode() == "prop_hunt" then
 	CreateConVar( "lps_ammocount_flechette", "100", FCVAR_ARCHIVE+FCVAR_REPLICATED+FCVAR_NOTIFY+FCVAR_SERVER_CAN_EXECUTE, "Last Prop Standing: Ammunition count for Flechette weapon." )
 	
 	if CLIENT then
-		killicon.Add( "hunter_flechette", "vgui/phx_flechette", Color(248,200,0,255) )
+		if !killicon.Exists( "hunter_flechette" ) then
+			killicon.Add( "hunter_flechette", "vgui/phx_flechette", Color(248,200,0,255) )
+		end
 	end
 	
 	-- Sound Tables
