@@ -67,7 +67,12 @@ if engine.ActiveGamemode() == "prop_hunt" then
 				pl:ViewPunch( Angle( -1, math.random(-1,1),0 ) )
 				
 				if SERVER then
-					pl:EmitSound( Sound( "prop_idbs/yeet_"..math.random(1,3)..".mp3" ), 80 )
+					if math.random() < 0.1 then 
+						pl:EmitSound( Sound( "vo/npc/male01/hacks01.wav" ), 80 ) -- very low chance that prop will shout 'HAAAAX!'
+					else
+						pl:EmitSound( Sound( "prop_idbs/yeet_"..math.random(1,3)..".mp3" ), 80 )
+					end
+					
 					local r = ents.Create("prop_physics")
 					if (IsValid(r)) then
 						r:SetModel( UsePropType(ph) )
